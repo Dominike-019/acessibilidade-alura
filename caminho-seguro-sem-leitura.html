@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caminho Seguro | Aprenda com tranquilidade</title>
+<style>
+:root {
+  --fundo:#fff9f7; --branco:#fff; --rosa:#d98fa5;
+  --rosa-claro:#f8e5eb; --lavanda:#e9e1f5;
+  --vinho:#78445b; --texto:#493b43; --suave:#786a72;
+  --borda:#ead8df; --verde:#e4f1e8; --sombra:0 8px 25px #78445b12;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:Arial,sans-serif;font-size:18px;line-height:1.65}
+button{font:inherit;cursor:pointer}
+.topo{background:#fff;box-shadow:var(--sombra);position:sticky;top:0;z-index:5}
+.topo-in{max-width:1150px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.marca{font-size:25px;font-weight:bold;color:var(--vinho);text-decoration:none}
+.marca span{display:inline-grid;place-items:center;background:var(--rosa-claro);width:42px;height:42px;border-radius:14px;margin-right:8px}
+.fonte{display:flex;align-items:center;gap:8px}
+.fonte button{border:1px solid var(--borda);background:var(--rosa-claro);color:var(--vinho);border-radius:10px;padding:7px 13px;font-weight:bold}
+nav{border-top:1px solid var(--borda)}
+.menu{max-width:1150px;margin:auto;padding:8px 18px;display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+.menu button{border:0;background:transparent;color:var(--vinho);padding:9px 15px;border-radius:12px;font-weight:bold}
+.menu button:hover,.menu button[aria-current=page]{background:var(--rosa-claro)}
+main{max-width:1100px;margin:35px auto;padding:0 22px;min-height:65vh}
+.hero{background:linear-gradient(120deg,#f8e5eb,#eee7f7);border-radius:28px;padding:clamp(25px,5vw,55px);display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+h1,h2,h3{color:var(--vinho);line-height:1.25}
+h1{font-size:clamp(30px,4vw,45px);margin:0 0 16px}
+h2{font-size:clamp(25px,3vw,32px)}
+h3{font-size:22px}
+.lead{font-size:20px;color:#66545e}
+.btn{border:0;background:var(--vinho);color:white;padding:13px 22px;border-radius:13px;font-weight:bold}
+.btn:hover{background:#603448}
+.regras,.cartao,.atalho,.linha{background:white;border:1px solid var(--borda);border-radius:18px;box-shadow:var(--sombra)}
+.regras{padding:22px}
+.regras ul{padding-left:22px}
+.regras li{margin:10px 0}
+.sub{margin-top:42px}
+.atalhos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.atalho{padding:22px;text-align:left;color:var(--texto);display:flex;flex-direction:column;gap:8px}
+.atalho strong{font-size:21px;color:var(--vinho)}
+.atalho:hover,.linha:hover{border-color:var(--rosa);transform:translateY(-2px)}
+.descricao{color:var(--suave)}
+.cab{display:flex;align-items:center;gap:18px;background:var(--rosa-claro);padding:25px;border-radius:22px;margin-bottom:22px}
+.cab h2{margin:0 0 8px}
+.cab p{margin:0}
+.pastilha{width:58px;height:58px;flex-shrink:0;border-radius:18px;background:white;display:grid;place-items:center;font-size:29px}
+.lista{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.linha{padding:19px;display:flex;align-items:center;gap:15px;text-align:left;color:var(--texto);width:100%;transition:.2s}
+.linha .pastilha{background:var(--lavanda)}
+.linha strong{display:block;color:var(--vinho);font-size:20px}
+.linha small{display:block;color:var(--suave);font-size:16px}
+.linha .seta{margin-left:auto;color:var(--vinho);font-size:23px}
+.cartao{padding:clamp(20px,4vw,35px);margin-top:20px}
+.modal-fundo{position:fixed;inset:0;background:#30202b99;z-index:10;display:grid;place-items:center;padding:18px}
+.modal{background:white;width:min(680px,100%);max-height:85vh;overflow:auto;border-radius:22px;padding:25px;box-shadow:0 20px 60px #0003}
+.modal-topo{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--borda);padding-bottom:12px}
+.modal-topo h2{margin:0}
+.fechar{border:0;background:var(--rosa-claro);color:var(--vinho);border-radius:10px;padding:9px 13px}
+.modal li{margin:12px 0}
+.bloco{background:#fff5f7;border-radius:14px;padding:15px;margin:15px 0}
+.bloco.protege{background:var(--verde)}
+.bloco h3{margin:0}
+.quiz-opcao{display:block;width:100%;text-align:left;background:#fff8fa;border:1px solid var(--borda);padding:15px;border-radius:12px;margin:10px 0;color:var(--texto)}
+.quiz-opcao:hover{border-color:var(--rosa)}
+.quiz-opcao:disabled{cursor:default}
+.certa{background:#e4f1e8;border-color:#7ca98b}
+.errada{background:#fbe7e7;border-color:#ce8888}
+.resultado{font-size:30px;font-weight:bold;color:var(--vinho)}
+.rodape{background:#78445b;color:white;margin-top:50px;padding:30px 22px}
+.rodape-in{max-width:1100px;margin:auto}
+.rodape h2{color:white}
+.rodape p{margin-bottom:0}
+[hidden]{display:none!important}
+button:focus-visible,a:focus-visible{outline:3px solid #a45b7b;outline-offset:3px}
+@media(max-width:700px){
+ .hero{grid-template-columns:1fr}
+ .lista,.atalhos{grid-template-columns:1fr}
+ .topo{position:relative}
+ .menu{justify-content:center}
+ .menu button{padding:8px 10px}
+ .cab{align-items:flex-start}
+}
+
+.icone{width:1.25em;height:1.25em;display:inline-block;vertical-align:-.22em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.pastilha .icone{width:1.35em;height:1.35em;vertical-align:middle}
+.marca .icone{width:1.35em;height:1.35em}
+.atalho strong .icone{margin-right:7px}
+.leitor .icone{width:1em;height:1em}
+</style>
+</head>
+<body>
+<header class="topo">
+ <div class="topo-in">
+  <a class="marca" href="#inicio" data-go="inicio"><span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12c-2-5-7-4-7-1s3 4 7 1Z"/><path d="M12 12c5-2 4-7 1-7s-4 3-1 7Z"/><path d="M12 12c2 5 7 4 7 1s-3-4-7-1Z"/><path d="M12 12c-5 2-4 7-1 7s4-3 1-7Z"/><circle cx="12" cy="12" r="2"/><path d="M12 14v7"/></svg></span>Caminho Seguro</a>
+  <div class="fonte" aria-label="Tamanho da letra">
+   <strong>Letra:</strong>
+   <button id="menos" aria-label="Diminuir letra">A−</button>
+   <button id="mais" aria-label="Aumentar letra">A+</button>
+  </div>
+ </div>
+ <nav aria-label="Menu principal">
+  <ul class="menu">
+   <li><button data-go="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg> Início</button></li>
+   <li><button data-go="seguranca"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg> Segurança</button></li>
+   <li><button data-go="golpes"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Golpes</button></li>
+   <li><button data-go="pratica"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22Z"/><path d="M4 5.5v14A2.5 2.5 0 0 1 6.5 17H20"/></svg> Na prática</button></li>
+   <li><button data-go="quiz"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6"/><path d="M10 3v4l-5 8a4 4 0 0 0 3.4 6h7.2a4 4 0 0 0 3.4-6l-5-8V3"/><path d="M8 14h8"/></svg> Quiz</button></li>
+  </ul>
+ </nav>
+</header>
+
+<main>
+<section id="inicio" class="secao">
+ <div class="hero">
+  <div>
+   <h1>Use o celular e a internet com tranquilidade.</h1>
+   <p class="lead">Aprenda no seu ritmo, sem pressa e sem termos difíceis. Descubra como aproveitar a tecnologia e se proteger de golpes.</p>
+   <button class="btn" data-go="seguranca">Começar a aprender →</button>
+  </div>
+  <aside class="regras">
+   <h2>Três regras para lembrar sempre</h2>
+   <ul>
+    <li>O banco nunca pede senha, código ou cartão por telefone.</li>
+    <li>Pressa e ameaça são sinais de golpe.</li>
+    <li>Na dúvida, desligue e procure o canal oficial.</li>
+   </ul>
+  </aside>
+ </div>
+ <h2 class="sub">O que você encontra aqui</h2>
+ <div class="atalhos">
+  <button class="atalho" data-go="seguranca"><strong><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg> Segurança digital</strong><span class="descricao">Proteja senhas, dados e compras.</span></button>
+  <button class="atalho" data-go="golpes"><strong><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Conhecendo os golpes</strong><span class="descricao">Aprenda a reconhecer situações suspeitas.</span></button>
+  <button class="atalho" data-go="pratica"><strong><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg> Aprenda na prática</strong><span class="descricao">Tutoriais simples para o dia a dia.</span></button>
+  <button class="atalho" data-go="quiz"><strong><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6"/><path d="M10 3v4l-5 8a4 4 0 0 0 3.4 6h7.2a4 4 0 0 0 3.4-6l-5-8V3"/><path d="M8 14h8"/></svg> Teste seus conhecimentos</strong><span class="descricao">Responda ao quiz e revise o que aprendeu.</span></button>
+ </div>
+</section>
+
+<section id="seguranca" class="secao" hidden>
+ <div class="cab"><span class="pastilha"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><h2>Segurança digital</h2><p class="lead">Cuidados simples para navegar sem medo. Escolha um assunto para saber mais.</p></div></div>
+ <div class="lista" id="grade-seguranca"></div>
+</section>
+
+<section id="golpes" class="secao" hidden>
+ <div class="cab"><span class="pastilha"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span><div><h2>Conhecendo os golpes</h2><p class="lead">Veja como os golpes acontecem e como você pode se proteger.</p></div></div>
+ <div class="lista" id="grade-golpes"></div>
+</section>
+
+<section id="pratica" class="secao" hidden>
+ <div class="cab"><span class="pastilha"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22Z"/><path d="M4 5.5v14A2.5 2.5 0 0 1 6.5 17H20"/></svg></span><div><h2>Aprenda na prática</h2><p class="lead">Tutoriais passo a passo para tarefas do dia a dia.</p></div></div>
+ <div class="lista" id="grade-pratica"></div>
+</section>
+
+<section id="quiz" class="secao" hidden>
+ <div class="cab"><span class="pastilha"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6"/><path d="M10 3v4l-5 8a4 4 0 0 0 3.4 6h7.2a4 4 0 0 0 3.4-6l-5-8V3"/><path d="M8 14h8"/></svg></span><div><h2>Quiz de conhecimentos</h2><p class="lead">Teste o que você aprendeu. Não há pressa e você pode tentar novamente.</p></div></div>
+ <div class="cartao" id="quiz-area" aria-live="polite"></div>
+</section>
+</main>
+
+<footer class="rodape">
+ <div class="rodape-in">
+  <h2><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 8.8c0 5.5-8.8 11-8.8 11S3.2 14.3 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7Z"/></svg> Caiu em um golpe?</h2>
+  <p>Avise seu banco imediatamente pelo telefone que está no verso do cartão e registre um boletim de ocorrência.</p>
+  <p><strong>Caminho Seguro</strong> — apoio digital para pessoas idosas.</p>
+ </div>
+</footer>
+
+<div class="modal-fundo" id="fundo" hidden>
+ <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+  <div class="modal-topo"><h2 id="modal-titulo"></h2><button class="fechar" id="fechar">Fechar <svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m18 6-12 12M6 6l12 12"/></svg></button></div>
+  <div id="modal-corpo"></div>
+ </div>
+</div>
+
+<script>
+
+function icone(nome){
+ const desenhos = {
+  "flower": `<path d="M12 12c-2-5-7-4-7-1s3 4 7 1Z"/><path d="M12 12c5-2 4-7 1-7s-4 3-1 7Z"/><path d="M12 12c2 5 7 4 7 1s-3-4-7-1Z"/><path d="M12 12c-5 2-4 7-1 7s4-3 1-7Z"/><circle cx="12" cy="12" r="2"/><path d="M12 14v7"/>`,
+  "home": `<path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/>`,
+  "shield": `<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>`,
+  "alert": `<path d="m10.3 3.9-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>`,
+  "book": `<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22Z"/><path d="M4 5.5v14A2.5 2.5 0 0 1 6.5 17H20"/>`,
+  "quiz": `<path d="M9 3h6"/><path d="M10 3v4l-5 8a4 4 0 0 0 3.4 6h7.2a4 4 0 0 0 3.4-6l-5-8V3"/><path d="M8 14h8"/>`,
+  "heart": `<path d="M20.8 8.8c0 5.5-8.8 11-8.8 11S3.2 14.3 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7Z"/>`,
+  "key": `<circle cx="8" cy="15" r="5"/><path d="m11.5 11.5 9-9"/><path d="m17 6 2 2"/><path d="m14 9 2 2"/>`,
+  "link": `<path d="M10 13a5 5 0 0 0 7.1 0l3-3A5 5 0 0 0 13 2.9l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.1 0l-3 3A5 5 0 0 0 11 21.1l1.7-1.7"/>`,
+  "id": `<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.8-2 5.2-2 6 0"/><path d="M14 10h4M14 14h4"/>`,
+  "users": `<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/>`,
+  "bag": `<path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>`,
+  "globe": `<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/>`,
+  "bank": `<path d="m3 10 9-7 9 7"/><path d="M4 10h16M5 10v9m4-9v9m6-9v9m4-9v9M3 21h18"/>`,
+  "chat": `<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3h.5a8.5 8.5 0 0 1 8 8v.5Z"/>`,
+  "gift": `<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18"/><path d="M12 8H7.5a2.5 2.5 0 1 1 2.4-3.2L12 8Zm0 0h4.5a2.5 2.5 0 1 0-2.4-3.2L12 8Z"/>`,
+  "wallet": `<rect x="3" y="5" width="18" height="15" rx="2"/><path d="M3 8h18"/><path d="M16 14h.01"/>`,
+  "phone": `<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.4 2.8a2 2 0 0 1-.6 1.7L7.5 9.6a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 1.7-.6l2.8.4a2 2 0 0 1 1.6 1.9Z"/>`,
+  "mail": `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,
+  "mobile": `<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>`,
+  "video": `<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/>`,
+  "flag": `<path d="M4 22V4"/><path d="M4 4c6-4 10 4 16 0v11c-6 4-10-4-16 0"/>`,
+  "download": `<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>`,
+  "card": `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/>`,
+  "play": `<path d="m8 5 12 7-12 7V5Z"/>`,
+  "pause": `<path d="M8 5v14M16 5v14"/>`,
+  "stop": `<rect x="6" y="6" width="12" height="12" rx="1"/>`,
+  "close": `<path d="m18 6-12 12M6 6l12 12"/>`,
+  "refresh": `<path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M5.6 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.4-3"/>`
+ };
+ return `<svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${desenhos[nome]||desenhos.book}</svg>`;
+}
+
+const dados={
+seguranca:[
+["key","Senhas fortes","Como criar e guardar senhas seguras.",["Use uma frase longa que só você conheça, com letras, números e símbolos. Exemplo: MeuGato2Dorme@Sofa.","Evite datas de aniversário, nomes de familiares e sequências como 123456.","Não use a mesma senha em todos os serviços.","Nunca informe sua senha ou códigos recebidos por SMS a ninguém.","Guarde suas senhas em local protegido."]],
+["link","Links suspeitos","Como não cair em links perigosos.",["Desconfie de mensagens com pressa, ameaças ou promessas.","Mesmo que venha de conhecido, confirme por outro meio se a mensagem parecer estranha.","Confira o endereço do site antes de tocar no link.","Na dúvida, não clique. Abra o aplicativo ou digite o endereço oficial."]],
+["id","Dados pessoais","O que você deve guardar só para você.",["CPF, RG, cartão, senhas e códigos são informações valiosas.","Não envie fotos de documentos ou cartões para desconhecidos.","Nunca informe códigos de confirmação recebidos por SMS.","Desconfie de quem pede dados para suposta atualização cadastral."]],
+["users","Redes sociais","Cuidados no Facebook, Instagram e WhatsApp.",["Deixe seu perfil privado quando possível.","Não aceite pedidos de amizade de pessoas desconhecidas.","Evite publicar endereço, viagens em andamento e documentos.","Ative a confirmação em duas etapas no WhatsApp."]],
+["bag","Compras na internet","Como comprar com mais segurança.",["Compre em lojas conhecidas ou bem avaliadas.","Preço muito abaixo do normal é sinal de alerta.","Confira o endereço do site. O cadeado sozinho não garante que a loja seja confiável.","Prefira meios de pagamento protegidos e confira o destinatário antes de pagar.","Guarde comprovantes e número do pedido."]],
+["globe","Sites e aplicativos falsos","Como reconhecer imitações.",["Confira o endereço do site, letra por letra.","Baixe aplicativos apenas na Google Play ou App Store.","Confira o desenvolvedor e as avaliações.","Desconfie de aplicativos que pedem permissões sem necessidade."]]
+],
+golpes:[
+["bank","Falso funcionário do banco","Alguém liga dizendo que é do seu banco.","O golpista afirma que sua conta foi invadida ou que existe uma compra suspeita.",["Ele pode saber seu nome e alguns dados para parecer confiável.","Pede senha, código, transferência ou entrega do cartão."],["O banco não pede senha, código ou cartão por telefone.","Desligue e ligue para o número do verso do cartão.","Nunca entregue seu cartão a alguém que aparece em sua casa."]],
+["chat","WhatsApp clonado","Um suposto parente pede dinheiro.","O criminoso usa a foto e o nome de alguém da família, mas escreve de um número novo.",["A mensagem diz: “Mudei de número. Pode fazer um Pix?”.","Há urgência e uma desculpa para não fazer ligação."],["Ligue para o número antigo da pessoa.","Confirme com outro familiar antes de transferir.","Ative a confirmação em duas etapas."]],
+["gift","Falsas promoções e sorteios","“Você ganhou um prêmio!”","Mensagens prometem prêmios ou descontos para convencer você a clicar ou pagar uma taxa.",["Prometem um prêmio que você não participou para ganhar.","O link leva a um site falso ou pede pagamento."],["Não pague para receber um prêmio.","Não clique em links inesperados.","Apague e denuncie a mensagem."]],
+["wallet","Golpes do Pix","Transferências feitas por engano ou pressão.","O golpista cria uma situação urgente para você transferir dinheiro sem conferir.",["Pede devolução de um valor que não entrou na conta.","Usa QR Code falso ou pedido de ajuda inventado."],["Confira o saldo no aplicativo do banco.","Leia o nome do destinatário antes de confirmar.","Não devolva valores sem confirmar com o banco."]],
+["phone","Falsas centrais de atendimento","Um telefone de suporte que não é oficial.","Anúncios e resultados de busca podem mostrar números falsos de bancos e empresas.",["O atendente pede acesso remoto ao celular.","Solicita dados, senhas ou códigos."],["Use o telefone do cartão ou do site oficial digitado por você.","Nunca instale aplicativos de acesso remoto a pedido de alguém.","Desconfie de ajuda que você não solicitou."]],
+["mail","SMS e e-mails falsos","Avisos de entrega, multas e dívidas.","Mensagens imitam empresas e órgãos para levar você a um link falso.",["“Sua encomenda está retida. Pague a taxa.”","“Você tem uma multa. Regularize agora.”"],["Não clique em links inesperados.","Procure o serviço no canal oficial.","Apague e denuncie como spam."]]
+],
+pratica:[
+["mobile","Enviar mensagem no WhatsApp","Escreva e envie uma mensagem.",["Abra o WhatsApp.","Toque no botão de nova conversa.","Escolha o contato.","Toque na barra de texto e escreva.","Toque na seta para enviar."]],
+["video","Fazer chamada de vídeo","Converse vendo a pessoa.",["Abra a conversa no WhatsApp.","Toque no ícone de câmera de vídeo.","Confirme a chamada, se necessário.","Aguarde a pessoa atender.","Para encerrar, toque no botão vermelho."]],
+["flag","Identificar mensagem suspeita","Aprenda a desconfiar na hora certa.",["Veja quem enviou a mensagem.","Procure sinais de pressa, ameaça ou promessa de dinheiro.","Desconfie de pedidos de senha, código ou transferência.","Não clique em links suspeitos.","Peça ajuda a alguém de confiança."]],
+["download","Baixar aplicativos com segurança","Instale apenas o que é confiável.",["Abra a Play Store (Android) ou App Store (iPhone).","Pesquise o nome do aplicativo.","Confira a empresa responsável e as avaliações.","Toque em Instalar ou Obter.","Não instale aplicativos recebidos por links desconhecidos."]],
+["card","Usar aplicativo do banco","Cuidados antes de cada operação.",["Baixe o aplicativo somente na loja oficial.","Use senha forte e bloqueio de tela.","Antes de confirmar um Pix, confira nome e valor.","Não faça operações com alguém desconhecido orientando por telefone.","Ao terminar, bloqueie a tela do celular."]]
+]
+};
+
+const secoes=["inicio","seguranca","golpes","pratica","quiz"];
+function ir(id){if(!secoes.includes(id))return;secoes.forEach(s=>document.getElementById(s).hidden=s!==id);document.querySelectorAll("[data-go]").forEach(b=>{if(b.tagName==="BUTTON"&&b.closest(".menu"))b.setAttribute("aria-current",b.dataset.go===id?"page":"false")});window.scrollTo({top:0,behavior:"smooth"});}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){ir(b.dataset.go);}});
+function montar(tipo){document.getElementById("grade-"+tipo).innerHTML=dados[tipo].map((x,i)=>`<button class="linha" data-tipo="${tipo}" data-i="${i}"><span class="pastilha">${icone(x[0])}</span><span><strong>${x[1]}</strong><small>${x[2]}</small></span><span class="seta">›</span></button>`).join("");}
+["seguranca","golpes","pratica"].forEach(montar);
+const fundo=document.getElementById("fundo");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-tipo]");if(!b)return;const x=dados[b.dataset.tipo][b.dataset.i];document.getElementById("modal-titulo").textContent=x[1];let html=`<p>${x[3]||""}</p>`;if(b.dataset.tipo==="golpes"){html=`<p>${x[3]}</p><div class="bloco"><h3>Como acontece</h3><ul>${x[4].map(t=>`<li>${t}</li>`).join("")}</ul></div><div class="bloco protege"><h3>Como se proteger</h3><ul>${x[5].map(t=>`<li>${t}</li>`).join("")}</ul></div>`;}else{const passos=b.dataset.tipo==="pratica";html=`<ul>${x[3].map(t=>`<li>${t}</li>`).join("")}</ul>`;}document.getElementById("modal-corpo").innerHTML=html;fundo.hidden=false;document.getElementById("fechar").focus();});
+function fechar(){fundo.hidden=true;}
+document.getElementById("fechar").onclick=fechar;
+fundo.addEventListener("click",e=>{if(e.target===fundo)fechar();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")fechar();});
+let tamanho=100;
+document.getElementById("mais").onclick=()=>{tamanho=Math.min(160,tamanho+10);document.documentElement.style.fontSize=tamanho+"%";};
+document.getElementById("menos").onclick=()=>{tamanho=Math.max(90,tamanho-10);document.documentElement.style.fontSize=tamanho+"%";};
+
+const perguntas=[
+["Uma pessoa liga dizendo ser do banco e pede um código recebido por SMS. O que fazer?",["Informar o código","Desligar e ligar para o número oficial","Enviar o código por mensagem"],1,"O banco nunca deve pedir seus códigos ou senhas por telefone."],
+["Qual senha é mais segura?",["123456","Maria1950","MeuGato2Dorme@Sofa"],2,"Frases longas com números e símbolos são mais difíceis de adivinhar."],
+["Um parente manda mensagem de um número novo pedindo Pix. O que fazer?",["Transferir logo","Ligar para o número antigo antes","Mandar seus dados"],1,"Confirme a identidade por outro canal antes de transferir dinheiro."],
+["Você recebeu um SMS dizendo que ganhou um prêmio. O que fazer?",["Clicar no link","Apagar sem clicar","Encaminhar"],1,"Links de prêmios inesperados podem levar a páginas falsas."],
+["Uma loja vende um celular por um preço muito abaixo do normal. Isso é:",["Uma oportunidade garantida","Um sinal de alerta","Prova de que é confiável"],1,"Preço muito abaixo do mercado pode ser uma isca."],
+["Onde é mais seguro baixar aplicativos?",["Em links de mensagens","Na loja oficial do celular","Em qualquer site"],1,"Prefira sempre a loja oficial do aparelho."]
+];
+let atual=0,pontos=0;
+function mostrar(){const p=perguntas[atual];document.getElementById("quiz-area").innerHTML=`<p>Pergunta ${atual+1} de ${perguntas.length}</p><h3>${p[0]}</h3>${p[1].map((o,i)=>`<button class="quiz-opcao" data-resp="${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join("")}<div id="feedback"></div>`;}
+document.getElementById("quiz-area").addEventListener("click",e=>{const b=e.target.closest("[data-resp]");if(!b)return;const p=perguntas[atual],r=+b.dataset.resp;document.querySelectorAll("[data-resp]").forEach((o,i)=>{o.disabled=true;if(i===p[2])o.classList.add("certa");if(i===r&&r!==p[2])o.classList.add("errada");});if(r===p[2])pontos++;document.getElementById("feedback").innerHTML=`<div class="bloco"><strong>${r===p[2]?"Resposta correta!":"Vamos aprender!"}</strong><p>${p[3]}</p><button class="btn" id="avancar">${atual===perguntas.length-1?"Ver resultado":"Próxima pergunta"}</button></div>`;});
+document.getElementById("quiz-area").addEventListener("click",e=>{if(e.target.id!=="avancar")return;atual++;if(atual<perguntas.length)mostrar();else document.getElementById("quiz-area").innerHTML=`<h2>Seu resultado</h2><p class="resultado">${pontos} de ${perguntas.length}</p><p>${pontos>=5?"Excelente! Você está aprendendo a se proteger.":"Muito bem! Revise as dicas e tente novamente."}</p><button class="btn" id="refazer">Refazer quiz</button>`;});
+document.getElementById("quiz-area").addEventListener("click",e=>{if(e.target.id==="refazer"){atual=0;pontos=0;mostrar();}});
+mostrar();
+const hash=location.hash.replace("#","");ir(secoes.includes(hash)?hash:"inicio");
+</script>
+</body>
+</html>
